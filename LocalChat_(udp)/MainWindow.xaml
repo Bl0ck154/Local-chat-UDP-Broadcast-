@@ -47,7 +47,7 @@
 			</Grid.ColumnDefinitions>
 
 			<Button Name="btnOnline" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-					 Grid.ColumnSpan="2" Width="40" Height="40" Click="btnOnline_Click" Focusable="False" Margin="0 0 7 0">
+					 Grid.ColumnSpan="2" Width="40" Height="40" Click="btnOnline_Click" Focusable="False" Margin="0 0 7 0" ToolTip="Connected chat members">
 				<Button.ContextMenu>
 					<ContextMenu Name="btnContextMenu">
 						<ContextMenu.ItemContainerStyle>
@@ -62,7 +62,8 @@
 			<StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
 				<TextBlock Margin="5" VerticalAlignment="Center" FontSize="18">Username:</TextBlock>
 				<TextBox Name="textboxUsername" Margin="5" Width="230" MaxLength="20"></TextBox>
-				<Button Name="btnStartChat" Margin="5" Click="btnStartChat_Click">Start chat</Button>
+				<Button Name="btnStartChat" Margin="5" ToolTip="Connect to chat"
+						Click="btnStartChat_Click">Start chat</Button>
 			</StackPanel>
 			
 			<TextBox Grid.Row="1" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Padding="0 -27 0 0"

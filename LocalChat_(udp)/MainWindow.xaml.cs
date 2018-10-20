@@ -18,10 +18,8 @@ namespace LocalChat__udp_
 	/// </summary>
 	public partial class MainWindow
 	{
-		const int LOCALPORT = 4000; //4683
+		const int LOCALPORT = 4000;
 		const int REMOTEPORT = 4000;
-	//	const string HOSTIP = "237.7.4.1"; // хост для групповой рассылки
-	//	IPAddress ipAddress;
 		string UserName;
 		public bool isConnected { get; set; } = false;
 		Socket listeningSocket;
@@ -32,8 +30,7 @@ namespace LocalChat__udp_
 		{
 			InitializeComponent();
 			WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-		//	ipAddress = IPAddress.Parse(HOSTIP);
+			
 			this.Closing += MainWindow_Closing;
 			this.Loaded += MainWindow_Loaded;
 			this.KeyDown += MainWindow_KeyDown;
@@ -135,11 +132,10 @@ namespace LocalChat__udp_
 					});
 				}
 			}
-			catch (ObjectDisposedException ex) { ReceiveMessages(); } // доступ к ликвидному объекту невозможен
+			catch (ObjectDisposedException ex) { ReceiveMessages(); } 
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.ToString());
-				//			CloseConnection();
 				ReceiveMessages();
 			}
 		}
@@ -211,7 +207,7 @@ namespace LocalChat__udp_
 
 		private void textboxMessage_PreviewTextInput(object sender, TextCompositionEventArgs e)
 		{
-			// TODO
+			// TODO popup
 			//TextBlock msg = (msgPopup.Child as TextBlock);
 			//msg.Text = $"{textboxMessage.Text.Length} characters left";
 			//msgPopup.IsOpen = true;
@@ -238,7 +234,7 @@ namespace LocalChat__udp_
 
 		private void MenuItem_Click(object sender, RoutedEventArgs e)
 		{
-			// TODO
+			// TODO check is member connected
 			//	MessageBox.Show((sender as MenuItem).DataContext.ToString());
 			MessageBox.Show(PingHost((sender as MenuItem).DataContext.ToString(), REMOTEPORT).ToString());
 		}
