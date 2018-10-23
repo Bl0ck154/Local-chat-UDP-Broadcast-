@@ -75,7 +75,7 @@ namespace LocalChat__udp_
 				listeningSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 				listeningSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
 
-				IPEndPoint localIp = new IPEndPoint(GetLocalIPAddress(), LOCALPORT);
+				IPEndPoint localIp = new IPEndPoint(IPAddress.Any, LOCALPORT);
 				listeningSocket.Bind(localIp);
 
 				remotePoint = new IPEndPoint(IPAddress.Broadcast, REMOTEPORT);
@@ -213,19 +213,20 @@ namespace LocalChat__udp_
 			//msgPopup.IsOpen = true;
 		}
 
-		public IPAddress GetLocalIPAddress()
-		{
-			IPAddress ip = null;
-			var host = Dns.GetHostEntry(Dns.GetHostName());
-			foreach (var item in host.AddressList)
-			{
-				if (item.AddressFamily == AddressFamily.InterNetwork)
-				{
-					ip = item;
-				}
-			}
-			return ip;
-		}
+		// Useless method because of IPAddress.Any
+		//public IPAddress GetLocalIPAddress()
+		//{
+		//	IPAddress ip = null;
+		//	var host = Dns.GetHostEntry(Dns.GetHostName());
+		//	foreach (var item in host.AddressList)
+		//	{
+		//		if (item.AddressFamily == AddressFamily.InterNetwork)
+		//		{
+		//			ip = item;
+		//		}
+		//	}
+		//	return ip;
+		//}
 
 		private void btnOnline_Click(object sender, RoutedEventArgs e)
 		{
